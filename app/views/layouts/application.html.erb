@@ -11,7 +11,7 @@
 
   <body>
     <!--ヘッダーの記述-->
-    <<header class="navbar navbar-fixed-top navbar-inverse">
+    <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
 
         <nav class="nav navbar-nav navbar-left">
@@ -33,13 +33,27 @@
             <% end %>
           </ul>
         </nav>
+        
 
       </div>
     </header>
+    
+      
     <!--ヘッダーの記述-->
     <div class="container">
+     <div class= "row">
+      <% if user_signed_in? %>
+
+          <%= form_tag(search_path,:method => 'get') do %>
+              <%= select_tag(:option, options_for_select([["user", "1"],["book","2"]]))%> 
+              <%= select_tag(:choice, options_for_select([['部分検索', "1"],['後方検索',"2"],["前方検索","3"],["完全一致検索","4"]])) %>
+              <%= text_field_tag :search %>
+              <%= submit_tag 'Search' %>
+          <% end %>
+      <% end %>
       <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
       <%= yield %>
+    </div>
 
     </div>
   </body>

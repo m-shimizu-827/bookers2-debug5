@@ -54,6 +54,8 @@ before_action :authenticate_user!
   	redirect_to books_path, notice: "successfully delete book!"
   end
 
+  
+
   private
 
   def user_params
